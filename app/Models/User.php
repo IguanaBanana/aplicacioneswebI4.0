@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
@@ -44,10 +45,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function chirps():HasMany
+    public function chirps()
     {
-
-        return $this->hasMany(Chirp::class);
+        return $this->belongsToMany(Chirp::class, 'chirp_user')
+                    ->withPivot('action')
+                    ->withTimestamps();
     }
-
 }

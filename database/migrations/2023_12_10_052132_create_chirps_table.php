@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('message');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();  
+            $table->unsignedInteger('likes')->default(0);
+            $table->unsignedInteger('dislikes')->default(0);
             $table->timestamps();
         });
     }
