@@ -32,4 +32,12 @@ class ImageController extends Controller
         // Devolver una respuesta
         return back()->with('success', 'La imagen se ha subido correctamente.');
     }
+
+    public function destroy($id)
+    {
+        $image = Image::findOrFail($id);
+        $image->delete();
+
+        return redirect()->back()->with('success', 'La imagen ha sido eliminada correctamente.');
+    }
 }

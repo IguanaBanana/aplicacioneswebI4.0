@@ -15,6 +15,8 @@ Route::get('/dashboard/recent-images', [DashboardController::class, 'image'])->n
 
 Route::post('/upload-image', [ImageController::class, 'upload'])->name('upload.image');
 
+Route::delete('/images/{id}', [ImageController::class, 'destroy'])->name('delete.image');
+
 Route::post('/usuarios', 'UsuarioController@store')->name('usuarios.store');
 
 Route::middleware('auth')->group(function () {

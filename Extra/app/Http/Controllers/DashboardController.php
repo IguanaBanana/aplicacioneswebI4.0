@@ -24,4 +24,6 @@ class DashboardController extends Controller
         $images = Image::with('user')->get();
         return view('dashboard', compact('images'));
     }
+
+
 }

@@ -57,4 +57,15 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function upload(Request $request)
+    {
+        // Validar la solicitud y subir la imagen
+
+        // Si la imagen se sube exitosamente
+        return back()->with('success', 'La imagen se ha subido correctamente.');
+
+        // Si la subida de la imagen falla
+        return back()->with('error', 'Error al subir la imagen. Por favor, intenta de nuevo.');
+    }
 }
